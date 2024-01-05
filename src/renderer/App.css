@@ -11,3 +11,7 @@ body {
   font-family: 'dana';
   @apply bg-slate-300;
 }
+
+.dir-ltr {
+  direction: ltr;
+}

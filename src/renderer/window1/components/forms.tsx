@@ -1,76 +1,80 @@
+import { InputType } from "./Input";
+
 export interface InputTemplate {
   name: string;
-  type?: React.HTMLInputTypeAttribute;
+  persianName: string;
+  type?: InputType;
   isQrBottomNum?: boolean;
 };
 
 export type Form = {
   name: string,
+  inputs: InputTemplate[],
   hasBottomNumber?: boolean,
-  inputs: InputTemplate[]
-}
+};
 
 function getForms(): Form[] {
   return [
     {
       name: 'قطعات ساخته شده',
       inputs: [
-        { name: 'name' },
-        { name: 'order-num', type: 'number' },
-        { name: 'material' },
-        { name: 'material-supplier' },
-        { name: 'maker' },
-        { name: 'qc' },
-        { name: 'designer' },
-        { name: 'number', type: 'number' },
-        { name: 'date', type: 'date' },
-        { name: 'plant' }
+        { name: 'name', persianName: 'نام' },
+        { name: 'product-code', persianName: 'کد کالا', type: 'code' },
+        { name: 'order-num', persianName: 'شماره سفارش', type: 'number', },
+        { name: 'material', persianName: 'جنس' },
+        { name: 'material-supplier', persianName: 'تامین کننده متریال' },
+        { name: 'maker', persianName: 'سازنده' },
+        { name: 'qc', persianName: 'کنترل کیفیت' },
+        { name: 'designer', persianName: 'طراح' },
+        { name: 'number', persianName: 'تعداد', type: 'number' },
+        { name: 'date', persianName: 'تاریخ', type: 'date' },
+        { name: 'plant', persianName: 'کارخانه' }
       ]
     },
     {
       name: 'تجهیزات خریداری شده',
       inputs: [
-        { name: 'name' },
-        { name: 'order-num', type: 'number' },
-        { name: 'material' },
-        { name: 'supplier' },
-        { name: 'maker' },
-        { name: 'qc' },
-        { name: 'delivery-number', type: 'number' },
-        { name: 'number', type: 'number' },
-        { name: 'date', type: 'date' },
-        { name: 'plant' }
+        { name: 'name', persianName: 'نام' },
+        { name: 'product-code', persianName: 'کد کالا', type: 'code' },
+        { name: 'order-num', persianName: 'شماره سفارش', type: 'number' },
+        { name: 'material', persianName: 'جنس' },
+        { name: 'supplier', persianName: 'تامین کننده' },
+        { name: 'maker', persianName: 'سازنده' },
+        { name: 'qc', persianName: 'کنترل کیفیت' },
+        { name: 'number', persianName: 'تعداد', type: 'number' },
+        { name: 'date', persianName: 'تاریخ', type: 'date' },
+        { name: 'plant', persianName: 'کارخانه' }
       ]
     },
     {
       name: 'اموال',
       hasBottomNumber: true,
       inputs: [
-        { name: 'name' },
-        { name: 'order-num', type: 'number' },
-        { name: 'property-num', type: 'number', isQrBottomNum: true },
-        { name: 'supplier' },
-        { name: 'user' },
-        { name: 'qc' },
-        { name: 'delivery-number', type: 'number' },
-        { name: 'life-time', type: 'number' },
-        { name: 'date', type: 'date' },
-        { name: 'plant' }
+        { name: 'name', persianName: 'نام' },
+        { name: 'product-code', persianName: 'کد کالا', type: 'code' },
+        { name: 'order-num', persianName: 'شماره سفارش', type: 'number' },
+        { name: 'property-num', persianName: 'کد اموال', type: 'number', isQrBottomNum: true },
+        { name: 'supplier', persianName: 'تامین کننده' },
+        { name: 'user', persianName: 'استفاده کننده' },
+        { name: 'qc', persianName: 'کنترل کیفیت' },
+        { name: 'life-time', persianName: 'طول عمر', type: 'number' },
+        { name: 'date', persianName: 'تاریخ', type: 'date' },
+        { name: 'plant', persianName: 'کارخانه' }
       ]
     },
     {
       name: 'تجهیزات تعمیر شده',
       inputs: [
-        { name: 'name' },
-        { name: 'order-num', type: 'number' },
-        { name: 'postage-date', type: 'date' },
-        { name: 'delivery-date', type: 'date' },
-        { name: 'service-provider' },
-        { name: 'qc' },
-        { name: 'delivery-number', type: 'number' },
-        { name: 'number', type: 'number' },
-        { name: 'price', type: 'number' },
-        { name: 'plant' }
+        { name: 'name', persianName: 'نام' },
+        { name: 'product-code', persianName: 'کد کالا', type: 'code' },
+        { name: 'order-num', persianName: 'شماره سفارش', type: 'number' },
+        { name: 'postage-date', persianName: 'تاریخ پست', type: 'date' },
+        { name: 'delivery-date', persianName: 'تاریخ تحویل', type: 'date' },
+        { name: 'service-provider', persianName: 'سرویس کار' },
+        { name: 'qc', persianName: 'کنترل کیفیت' },
+        { name: 'number', persianName: 'تعداد', type: 'number' },
+        { name: 'price', persianName: 'قیمت',  type: 'number' },
+        { name: 'plant', persianName: 'کارخانه' }
       ]
     },
   ];

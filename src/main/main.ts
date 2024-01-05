@@ -1,13 +1,4 @@
 /* eslint global-require: off, no-console: off, promise/always-return: off */
-
-/**
- * This module executes inside of electron's main process. You can start
- * electron renderer process from here and communicate with the other processes
- * through IPC.
- *
- * When running `npm run build` or `npm run build:main`, this file is compiled to
- * `./src/main.js` using webpack. This gives us some performance wins.
- */
 import path, { resolve } from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
@@ -71,15 +62,15 @@ const createWindow = async () => {
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: false
     },
   });
   mainWindow.loadURL(resolveHtmlPath('window1/index.html'));
-  
   workerWindow = new BrowserWindow({
+    show: false,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: false
     }
   });
   workerWindow.loadURL(resolveHtmlPath('window2/index.html'));
@@ -95,8 +86,11 @@ const createWindow = async () => {
     }
   });
 
-  mainWindow.on('closed', () => mainWindow = null );
-  workerWindow.on('closed', () => workerWindow = null );
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+    workerWindow?.close();
+  });
+  workerWindow.on('closed', () => workerWindow = null);
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
